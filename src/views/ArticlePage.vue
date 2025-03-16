@@ -1,14 +1,13 @@
 <script setup lang="ts">
 import {useRoute} from "vue-router";
 import {computed, inject} from "vue";
+import {formatRouteKey} from '@/shared/helper'
 
 const route = useRoute()
 const content = inject("content")
 const currentKey = computed(() => {
   if (route.params?.key)
-    return (route.params.key as string)
-        .slice(0, -5)
-        .replace(/-/g, '_')
+    return formatRouteKey(route.params.key as string)
 })
 </script>
 
